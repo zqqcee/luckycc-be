@@ -5,8 +5,7 @@ WORKDIR /home/node
  
 COPY . .
 RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g pnpm
-RUN pnpm install
+RUN npm install
  
 EXPOSE 1234 
-CMD ["pnpm", "run", "start"]
+CMD ["npm", "run", "start"]
