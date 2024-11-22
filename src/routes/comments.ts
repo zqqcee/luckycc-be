@@ -17,8 +17,17 @@ app.get('/', zValidator('query', z.object({
     return c.json(SuccessResp({ data: comments }))
 })
 
-app.post('/', zValidator('form', postMessageSchema), async (c) => {
-    const comment = await c.req.valid('form');
+// app.post('/', zValidator('form', postMessageSchema), async (c) => {
+//     const comment = await c.req.valid('form');
+//     try {
+//         const response = await postComments(comment);
+//         return c.json(SuccessResp({ data: response.rowCount }))
+//     } catch (err) {
+//         return c.json(ErrorResp());
+//     }
+// })
+app.post('/', zValidator('json', postMessageSchema), async (c) => {
+    const comment = await c.req.valid('json');
     try {
         const response = await postComments(comment);
         return c.json(SuccessResp({ data: response.rowCount }))
