@@ -1,4 +1,4 @@
-FROM node:2020
+FROM node:20
  
 USER node
 WORKDIR /home/node
