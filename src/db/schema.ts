@@ -7,7 +7,7 @@ export const commentsTable = pgTable("comments", {
     parentId: integer(),
     email: varchar({ length: 255 }).notNull(),
     url: varchar({ length: 255 }),
-    username: varchar({ length: 255 }).notNull().unique(),
+    username: varchar({ length: 255 }).notNull(),
     createdTime: timestamp().notNull().defaultNow(),
     approved: boolean().default(false),
     text: varchar({ length: 255 }).notNull(),

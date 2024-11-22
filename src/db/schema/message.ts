@@ -6,4 +6,5 @@ export const postMessageSchema = z.object({
     url: z.string().optional(),
     text: z.string(),
     username: z.string(),
+    pageTitle: z.string().optional(),
 })

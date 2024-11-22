@@ -4,6 +4,7 @@ import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
 import { SuccessResp, ErrorResp } from '@/response'
 import { postMessageSchema } from '@/db/schema/message'
+import { bark } from '@/helper/bark'
 
 const app = new Hono()
 
@@ -30,6 +31,7 @@ app.post('/', zValidator('json', postMessageSchema), async (c) => {
     const comment = await c.req.valid('json');
     try {
         const response = await postComments(comment);
+        bark(comment);
         return c.json(SuccessResp({ data: response.rowCount }))
     } catch (err) {
         return c.json(ErrorResp());

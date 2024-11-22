@@ -5,13 +5,6 @@ import { cors } from 'hono/cors'
 
 const app = new Hono()
 
-// app.use('*', cors({
-//   origin: 'http://localhost:4321',
-//   allowHeaders: ['*'],
-//   allowMethods: ['POST', 'GET', 'OPTIONS'],
-//   // exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
-//   // credentials: true,
-// }))
 
 app.use('/*', cors({
   origin: ['https://luckycc.cc', 'https://zqqcee.github.io'],
