@@ -13,7 +13,9 @@ const app = new Hono()
 //   // credentials: true,
 // }))
 
-app.use('/*', cors())
+app.use('/*', cors({
+  origin: 'https://luckycc.cc'
+}))
 
 app.route('/comments', comments)
 
