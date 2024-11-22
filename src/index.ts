@@ -14,7 +14,8 @@ const app = new Hono()
 // }))
 
 app.use('/*', cors({
-  origin: 'https://luckycc.cc'
+  origin: ['https://luckycc.cc', 'https://zqqcee.github.io'],
+  allowMethods: ['POST', 'GET', 'OPTIONS'],
 }))
 
 app.route('/comments', comments)
