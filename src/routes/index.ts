@@ -1,2 +1,3 @@
 import comments from './comments'
-export { comments }
+import moments from './moment'
+export { comments, moments }

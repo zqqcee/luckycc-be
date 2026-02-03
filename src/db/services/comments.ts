@@ -4,7 +4,9 @@ import { commentsTable } from '../schema'
 import { getAvatarByEmail } from '@/helper/avatar'
 import { postMessageSchema } from '../schema/message'
 import { z } from 'zod'
+
 export const getComments = async (pageId: string, id?: number) => {
+    if (!db) throw new Error('Database not configured')
     const pageIdHandle = eq(commentsTable.pageId, pageId);
     const approveHandle = eq(commentsTable.approved, true)
     const allComments = db.select().from(commentsTable).where(and(pageIdHandle, approveHandle)).orderBy(asc(commentsTable.createdTime))
@@ -12,6 +14,7 @@ export const getComments = async (pageId: string, id?: number) => {
 }
 
 export const postComments = async (comment: z.infer<typeof postMessageSchema>) => {
+    if (!db) throw new Error('Database not configured')
     const avatar = getAvatarByEmail(comment.email)
     return await db.insert(commentsTable).values({ ...comment, avatar });
 }
